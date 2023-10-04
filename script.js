@@ -21,14 +21,16 @@ myApp.controller("myController",function($scope){
         $scope.List[index].status = "removed";
         localStorage.setItem("data",JSON.stringify($scope.List));  
     }
-
-    $scope.complete = function(index){
+    
+    $scope.complete = function(index, event) {
         $scope.List[index].status = "completed";
-        localStorage.setItem("data",JSON.stringify($scope.List));  
+        event.currentTarget.innerHTML = 'COMPLETED';
+        localStorage.setItem("data", JSON.stringify($scope.List));  
     }
+    
 
     $scope.showRow = function (index) {
-        return $scope.List[index].status == "added";
+        return $scope.List[index].status != "removed";
     };
     
     $scope.edit=function(index){
